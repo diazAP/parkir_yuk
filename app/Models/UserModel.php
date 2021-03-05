@@ -62,7 +62,7 @@ class UserModel extends Model
         WHERE user_id IS NOT NULL
         " . role_check($filter['role']) . "
         " . keyword_check($filter['keyword']) . "
-        ORDER BY date_created ASC
+        ORDER BY date_created DESC
         " . limit($filter['page'], $filter['per_page']) . "
         ";
 

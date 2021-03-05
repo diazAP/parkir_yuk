@@ -23,8 +23,8 @@ class Auth extends Controller
 
     function login()
     {
-        $client_id = '632277045278-t40d8mdaqfcd6884pslucc9jmi1ir7v7.apps.googleusercontent.com';
-        $client_secret = 'FOPxkiynfvfEw0bcCtEp8QaM';
+        $client_id = '';
+        $client_secret = '';
         $redirect_uri = base_url('auth/callback');
         $client = new \Google_Client();
         $client->setApplicationName("Parkir Yuk!");
@@ -39,8 +39,8 @@ class Auth extends Controller
 
     function callback()
     {
-        $client_id = '632277045278-t40d8mdaqfcd6884pslucc9jmi1ir7v7.apps.googleusercontent.com';
-        $client_secret = 'FOPxkiynfvfEw0bcCtEp8QaM';
+        $client_id = '';
+        $client_secret = '';
         $redirect_uri = base_url('auth/callback');
         $client = new \Google_Client();
         $client->setApplicationName("Parkir Yuk!");
