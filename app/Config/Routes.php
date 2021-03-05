@@ -7,8 +7,7 @@ $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 	require SYSTEMPATH . 'Config/Routes.php';
 }
 
@@ -18,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Auth');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -32,7 +31,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Auth::index');
 
 /*
  * --------------------------------------------------------------------
@@ -47,7 +46,32 @@ $routes->get('/', 'Home::index');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
+// Auth
+$routes->get('/auth', 'Auth::index');
+$routes->get('/auth/login', 'Auth::login');
+$routes->get('/auth/callback', 'Auth::callback');
+$routes->get('/auth/logout', 'Auth::logout');
+
+// Home
+$routes->get('/home', 'Home::index');
+$routes->get('/home/in', 'Home::in');
+$routes->get('/home/out', 'Home::out');
+
+// History
+$routes->get('/history', 'History::index');
+$routes->get('/history/detail/(:num)', 'History::detail/$1');
+
+// Report
+$routes->get('/report', 'Report::index');
+$routes->get('/report/detail/(:num)', 'Report::detail/$1');
+
+// User
+$routes->get('/user', 'User::index');
+$routes->get('/user/detail/(:num)', 'User::detail/$1');
+
+// Profile
+$routes->get('/profile', 'Profile::index');
+
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }

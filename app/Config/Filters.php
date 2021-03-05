@@ -19,6 +19,7 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
+		'session_auth'	=> \App\Filters\SessionAuth::class
 	];
 
 	/**
@@ -29,6 +30,7 @@ class Filters extends BaseConfig
 	 */
 	public $globals = [
 		'before' => [
+			'session_auth' => ['except' => ['auth/*', '']]
 			// 'honeypot',
 			// 'csrf',
 		],
